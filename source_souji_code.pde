@@ -40,8 +40,8 @@ class Ball{
     this.velX = velX;
     this.velY = velY;
   }
-
-  public void move(){
+  
+  public void reflect(){
     if(this.posX < 0)
     {
       this.posX = - this.posX;
@@ -61,6 +61,10 @@ class Ball{
       this.posY = height - ( this.posY - height );
       this.velY = - this.velY;
     }
+  }
+
+  public void move(){
+    this.reflect();
     
     this.posX += this.velX;
     this.posY += this.velY;
