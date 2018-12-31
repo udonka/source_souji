@@ -23,7 +23,8 @@ void draw(){
   strokeWeight(5);
 
   for(Ball ball : balls){
-    ball.moveAndDraw();
+    ball.move();
+    ball.draw();
   }
 }
 
@@ -40,7 +41,7 @@ class Ball{
     this.velY = velY;
   }
 
-  public void moveAndDraw(){
+  public void move(){
     if(this.posX < 0)
     {
       this.posX = - this.posX;
@@ -63,7 +64,9 @@ class Ball{
     
     this.posX += this.velX;
     this.posY += this.velY;
-
+  }
+  
+  public void draw(){
     ellipse(this.posX, this.posY , 30, 30);
   }
 }
