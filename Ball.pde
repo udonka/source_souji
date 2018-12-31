@@ -38,10 +38,29 @@ class Ball{
   }
   
   public void draw(){
-    fill(255,0,0);
-    stroke(255,255,0);
-    strokeWeight(5);
+    fill(0,0,0);
 
-    ellipse(this.pos.x, this.pos.y , 30, 30);
+    pushMatrix();
+      translate(this.pos.x, this.pos.y);
+      scale(0.5, 0.5);
+      this.drawShuriken();
+
+    popMatrix();
+
+  }
+  
+  private void drawShuriken(){
+    beginShape();
+      vertex(20, 20);
+      vertex(100, 0);
+      vertex(20, -20);
+      vertex(0, -100);
+      vertex(-20, -20);
+      vertex(-100, 0);
+      vertex(-20, 20);
+      vertex(0, 100);
+    endShape(CLOSE);
+    
+    ellipse(0, 0, 30, 30);    
   }
 }
