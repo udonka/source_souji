@@ -42,27 +42,29 @@ class Ball{
   }
   
   public void reflect(){
-    if(this.posX < 0)
-    {
-      this.posX = - this.posX;
-      this.velX = - this.velX;
-    }
-    else if(this.posX > width){
-      this.posX = width - ( this.posX - width );
-      this.velX = - this.velX;
-    }
+    float[] xPosAndVel = reflect_func(this.posX, this.velX, 0, width);
+    this.posX = xPosAndVel[0]; //pos
+    this.velX = xPosAndVel[1]; //vel
     
-    if(this.posY < 0)
-    {
-      this.posY = - this.posY;
-      this.velY = - this.velY;
-    }
-    else if(this.posY> height){
-      this.posY = height - ( this.posY - height );
-      this.velY = - this.velY;
-    }
+    float[] yPosAndVel = reflect_func(this.posY, this.velY, 0, height);
+    this.posY = yPosAndVel[0]; //pos
+    this.velY = yPosAndVel[1]; //vel
   }
-
+  
+  public float[] reflect_func(float pos, float vel, float min, float max){
+    float newPos = pos;
+    float newVel = vel;
+    if(pos < min) {
+      newPos = min - ( pos - min );
+      newVel = - vel;
+    }
+    else if(pos > max){
+      newPos = max - ( pos - max );
+      newVel = - vel;
+    }
+    return new float[]{newPos,newVel};
+  }
+  
   public void move(){
     this.reflect();
     
