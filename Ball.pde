@@ -38,8 +38,8 @@ class Ball{
   }
   
   public void draw(){
-    fill(255,0,0);
-    stroke(255,255,0);
+    fill(this.pos.x/width * 100,this.pos.y/height * 100,100);
+    stroke(0,0,80);
     strokeWeight(5);
 
     ellipse(this.pos.x, this.pos.y , 30, 30);
