@@ -20,8 +20,12 @@ void draw(){
   
   for(Ball ball : balls){
     ball.move();
+  }
+  
+  for(Ball ball : balls){
     ball.draw();
   }
+
 }
 
 class Ball{
