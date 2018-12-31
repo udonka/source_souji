@@ -5,12 +5,12 @@ void setup(){
   background(255,255,255);
 
   for(int i = 0; i < 5; i++){
-    Ball newBall = new Ball();
-
-    newBall.posX = width/2+random(5);
-    newBall.posY = height/2+random(5);
-    newBall.velX = random(5);
-    newBall.velY = random(5);
+    Ball newBall = new Ball(
+      width/2+random(5),
+      height/2+random(5),
+      random(5),
+      random(5)
+    );
 
     balls.add(newBall);
   }
@@ -56,4 +56,11 @@ class Ball{
   public float posY = 0;
   public float velX = 0;
   public float velY = 0;
+  
+  public Ball(float posX, float posY, float velX, float velY){
+    this.posX = posX;
+    this.posY = posY;
+    this.velX = velX;
+    this.velY = velY;
+  }
 }
