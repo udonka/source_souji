@@ -6,11 +6,16 @@ void setup(){
 
   for(int i = 0; i < 5; i++){
     Ball newBall = new Ball(
-      width/2+random(5),
-      height/2+random(5),
-      random(5),
-      random(5)
+      new Vec( // position  
+        width/2+random(5),
+        height/2+random(5)
+      ),
+      new Vec( // velocity
+        random(5),
+        random(5)
+      )
     );
+    
     balls.add(newBall);
   }
 }

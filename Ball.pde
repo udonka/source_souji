@@ -1,24 +1,20 @@
 class Ball{
-  private float posX = 0;
-  private float posY = 0;
-  private float velX = 0;
-  private float velY = 0;
-
-  public Ball(float posX, float posY, float velX, float velY){
-    this.posX = posX;
-    this.posY = posY;
-    this.velX = velX;
-    this.velY = velY;
+  private Vec pos = new Vec();
+  private Vec vel = new Vec();
+  
+  public Ball(Vec pos,Vec vel){
+    this.pos = pos;
+    this.vel = vel;
   }
   
   public void reflect(){
-    float[] xPosAndVel = reflectFunc(this.posX, this.velX, 0, width);
-    this.posX = xPosAndVel[0]; //pos
-    this.velX = xPosAndVel[1]; //vel
+    float[] xPosAndVel = reflectFunc(this.pos.x, this.vel.x, 0, width);
+    this.pos.x = xPosAndVel[0]; //pos
+    this.vel.x = xPosAndVel[1]; //vel
     
-    float[] yPosAndVel = reflectFunc(this.posY, this.velY, 0, height);
-    this.posY = yPosAndVel[0]; //pos
-    this.velY = yPosAndVel[1]; //vel
+    float[] yPosAndVel = reflectFunc(this.pos.y, this.vel.y, 0, height);
+    this.pos.y = yPosAndVel[0]; //pos
+    this.vel.y = yPosAndVel[1]; //vel
   }
   
   public float[] reflectFunc(float pos, float vel, float min, float max){
@@ -38,8 +34,7 @@ class Ball{
   public void move(){
     this.reflect();
     
-    this.posX += this.velX;
-    this.posY += this.velY;
+    this.pos.add(this.vel);
   }
   
   public void draw(){
@@ -47,6 +42,6 @@ class Ball{
     stroke(255,255,0);
     strokeWeight(5);
 
-    ellipse(this.posX, this.posY , 30, 30);
+    ellipse(this.pos.x, this.pos.y , 30, 30);
   }
 }
