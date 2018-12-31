@@ -1,16 +1,16 @@
-ArrayList<float[]> balls = new ArrayList<float[]>();
+ArrayList<Ball> balls = new ArrayList<Ball>();
 
 void setup(){
   size(300,300);
   background(255,255,255);
 
   for(int i = 0; i < 5; i++){
-    float newBall[] = new float[4];
+    Ball newBall = new Ball();
 
-    newBall[0] = width/2+random(5);
-    newBall[1] = height/2+random(5);
-    newBall[2] = random(5);
-    newBall[3] = random(5);
+    newBall.posX = width/2+random(5);
+    newBall.posY = height/2+random(5);
+    newBall.velX = random(5);
+    newBall.velY = random(5);
 
     balls.add(newBall);
   }
@@ -23,30 +23,37 @@ void draw(){
   stroke(255,255,0);
   strokeWeight(5);
 
-  for(float[] ball : balls){
-    if(ball[0] < 0)
+  for(Ball ball : balls){
+    if(ball.posX < 0)
     {
-      ball[0] = - ball[0];
-      ball[2] = - ball[2];
+      ball.posX = - ball.posX;
+      ball.velX = - ball.velX;
     }
-    else if(ball[0] > width){
-      ball[0] = width - ( ball[0] - width );
-      ball[2] = - ball[2];
+    else if(ball.posX > width){
+      ball.posX = width - ( ball.posX - width );
+      ball.velX = - ball.velX;
     }
     
-    if(ball[1] < 0)
+    if(ball.posY < 0)
     {
-      ball[1] = - ball[1];
-      ball[3] = - ball[3];
+      ball.posY = - ball.posY;
+      ball.velY = - ball.velY;
     }
-    else if(ball[1]> height){
-      ball[1] = height - ( ball[1] - height );
-      ball[3] = - ball[3];
+    else if(ball.posY> height){
+      ball.posY = height - ( ball.posY - height );
+      ball.velY = - ball.velY;
     }
     
-    ball[0] += ball[2];
-    ball[1] += ball[3];    
+    ball.posX += ball.velX;
+    ball.posY += ball.velY;    
 
-    ellipse(ball[0], ball[1] , 30, 30);
+    ellipse(ball.posX, ball.posY , 30, 30);
   }
+}
+
+class Ball{
+  public float posX = 0;
+  public float posY = 0;
+  public float velX = 0;
+  public float velY = 0;
 }
