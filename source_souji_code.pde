@@ -18,10 +18,6 @@ void setup(){
 void draw(){
   background(255,255,255);
   
-  fill(255,0,0);
-  stroke(255,255,0);
-  strokeWeight(5);
-
   for(Ball ball : balls){
     ball.move();
     ball.draw();
@@ -73,6 +69,10 @@ class Ball{
   }
   
   public void draw(){
+    fill(255,0,0);
+    stroke(255,255,0);
+    strokeWeight(5);
+
     ellipse(this.posX, this.posY , 30, 30);
   }
 }
