@@ -33,8 +33,7 @@ class Ball{
   
   public void move(){
     this.reflect();
-    
-    this.pos.add(this.vel);
+    this.pos.add(this.vel.mul(0.999));
   }
   
   public void draw(){
