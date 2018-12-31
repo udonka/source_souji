@@ -3,6 +3,7 @@ class Ball{
   private Vec vel = new Vec();
   private float theta = random(5);
   private float spin = random(0.3);
+  private Vec acc = new Vec(0, 1);
   
   public Ball(Vec pos,Vec vel){
     this.pos = pos;
@@ -36,6 +37,7 @@ class Ball{
   public void move(){
     this.reflect();
     
+    this.vel.add(this.acc);
     this.pos.add(this.vel);
   }
   
