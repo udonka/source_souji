@@ -42,16 +42,16 @@ class Ball{
   }
   
   public void reflect(){
-    float[] xPosAndVel = reflect_func(this.posX, this.velX, 0, width);
+    float[] xPosAndVel = reflectFunc(this.posX, this.velX, 0, width);
     this.posX = xPosAndVel[0]; //pos
     this.velX = xPosAndVel[1]; //vel
     
-    float[] yPosAndVel = reflect_func(this.posY, this.velY, 0, height);
+    float[] yPosAndVel = reflectFunc(this.posY, this.velY, 0, height);
     this.posY = yPosAndVel[0]; //pos
     this.velY = yPosAndVel[1]; //vel
   }
   
-  public float[] reflect_func(float pos, float vel, float min, float max){
+  public float[] reflectFunc(float pos, float vel, float min, float max){
     float newPos = pos;
     float newVel = vel;
     if(pos < min) {
