@@ -28,10 +28,10 @@ void draw(){
 }
 
 class Ball{
-  public float posX = 0;
-  public float posY = 0;
-  public float velX = 0;
-  public float velY = 0;
+  private float posX = 0;
+  private float posY = 0;
+  private float velX = 0;
+  private float velY = 0;
 
   public Ball(float posX, float posY, float velX, float velY){
     this.posX = posX;
