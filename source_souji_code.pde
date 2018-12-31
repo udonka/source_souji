@@ -11,7 +11,6 @@ void setup(){
       random(5),
       random(5)
     );
-
     balls.add(newBall);
   }
 }
@@ -24,30 +23,7 @@ void draw(){
   strokeWeight(5);
 
   for(Ball ball : balls){
-    if(ball.posX < 0)
-    {
-      ball.posX = - ball.posX;
-      ball.velX = - ball.velX;
-    }
-    else if(ball.posX > width){
-      ball.posX = width - ( ball.posX - width );
-      ball.velX = - ball.velX;
-    }
-    
-    if(ball.posY < 0)
-    {
-      ball.posY = - ball.posY;
-      ball.velY = - ball.velY;
-    }
-    else if(ball.posY> height){
-      ball.posY = height - ( ball.posY - height );
-      ball.velY = - ball.velY;
-    }
-    
-    ball.posX += ball.velX;
-    ball.posY += ball.velY;    
-
-    ellipse(ball.posX, ball.posY , 30, 30);
+    ball.moveAndDraw();
   }
 }
 
@@ -56,11 +32,38 @@ class Ball{
   public float posY = 0;
   public float velX = 0;
   public float velY = 0;
-  
+
   public Ball(float posX, float posY, float velX, float velY){
     this.posX = posX;
     this.posY = posY;
     this.velX = velX;
     this.velY = velY;
+  }
+
+  public void moveAndDraw(){
+    if(this.posX < 0)
+    {
+      this.posX = - this.posX;
+      this.velX = - this.velX;
+    }
+    else if(this.posX > width){
+      this.posX = width - ( this.posX - width );
+      this.velX = - this.velX;
+    }
+    
+    if(this.posY < 0)
+    {
+      this.posY = - this.posY;
+      this.velY = - this.velY;
+    }
+    else if(this.posY> height){
+      this.posY = height - ( this.posY - height );
+      this.velY = - this.velY;
+    }
+    
+    this.posX += this.velX;
+    this.posY += this.velY;
+
+    ellipse(this.posX, this.posY , 30, 30);
   }
 }
