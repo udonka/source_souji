@@ -2,7 +2,8 @@ ArrayList<Ball> balls = new ArrayList<Ball>();
 
 void setup(){
   size(300,300);
-  background(255,255,255);
+  colorMode(HSB, 100);
+  background(255,0,0);
 
   for(int i = 0; i < 5; i++){
     Ball newBall = new Ball(
@@ -21,7 +22,7 @@ void setup(){
 }
 
 void draw(){
-  background(255,255,255);
+  background(0,0,100);
   
   for(Ball ball : balls){
     ball.move();

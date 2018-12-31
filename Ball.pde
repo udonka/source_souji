@@ -42,7 +42,9 @@ class Ball{
   }
   
   public void draw(){
-    fill(0,0,0);
+    fill(this.pos.x/width * 100,this.pos.y/height * 100,100);
+    stroke(0,0,80);
+    strokeWeight(5);
 
     pushMatrix();
       translate(this.pos.x, this.pos.y);
