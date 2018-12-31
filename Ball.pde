@@ -1,6 +1,7 @@
 class Ball{
   private Vec pos = new Vec();
   private Vec vel = new Vec();
+  private Vec acc = new Vec(0, 1);
   
   public Ball(Vec pos,Vec vel){
     this.pos = pos;
@@ -34,6 +35,7 @@ class Ball{
   public void move(){
     this.reflect();
     
+    this.vel.add(this.acc);
     this.pos.add(this.vel);
   }
   
