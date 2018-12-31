@@ -1,6 +1,8 @@
 class Ball{
   private Vec pos = new Vec();
   private Vec vel = new Vec();
+  private float theta = random(5);
+  private float spin = random(0.3);
   
   public Ball(Vec pos,Vec vel){
     this.pos = pos;
@@ -43,10 +45,12 @@ class Ball{
     pushMatrix();
       translate(this.pos.x, this.pos.y);
       scale(0.5, 0.5);
+      rotate(this.theta);
       this.drawShuriken();
 
     popMatrix();
 
+    this.theta += this.spin;
   }
   
   private void drawShuriken(){
