@@ -1,18 +1,18 @@
-ArrayList<float[]> datas = new ArrayList<float[]>();
+ArrayList<float[]> balls = new ArrayList<float[]>();
 
 void setup(){
   size(300,300);
   background(255,255,255);
 
   for(int i = 0; i < 5; i++){
-    float a[] = new float[4];
+    float newBall[] = new float[4];
 
-    a[0] = width/2+random(5);
-    a[1] = height/2+random(5);
-    a[2] = random(5);
-    a[3] = random(5);
+    newBall[0] = width/2+random(5);
+    newBall[1] = height/2+random(5);
+    newBall[2] = random(5);
+    newBall[3] = random(5);
 
-    datas.add(a);
+    balls.add(newBall);
   }
 }
 
@@ -23,30 +23,30 @@ void draw(){
   stroke(255,255,0);
   strokeWeight(5);
 
-  for(float[] data : datas){
-    if(data[0] < 0)
+  for(float[] ball : balls){
+    if(ball[0] < 0)
     {
-      data[0] = - data[0];
-      data[2] = - data[2];
+      ball[0] = - ball[0];
+      ball[2] = - ball[2];
     }
-    else if(data[0] > width){
-      data[0] = width - ( data[0] - width );
-      data[2] = - data[2];
+    else if(ball[0] > width){
+      ball[0] = width - ( ball[0] - width );
+      ball[2] = - ball[2];
     }
     
-    if(data[1] < 0)
+    if(ball[1] < 0)
     {
-      data[1] = - data[1];
-      data[3] = - data[3];
+      ball[1] = - ball[1];
+      ball[3] = - ball[3];
     }
-    else if(data[1]> height){
-      data[1] = height - ( data[1] - height );
-      data[3] = - data[3];
+    else if(ball[1]> height){
+      ball[1] = height - ( ball[1] - height );
+      ball[3] = - ball[3];
     }
     
-    data[0] += data[2];
-    data[1] += data[3];    
+    ball[0] += ball[2];
+    ball[1] += ball[3];    
 
-    ellipse(data[0], data[1] , 30, 30);
+    ellipse(ball[0], ball[1] , 30, 30);
   }
 }
